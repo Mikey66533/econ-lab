@@ -207,18 +207,22 @@ export function IncentiveChart({
           {(["behave", "shirk"] as const).map((kind) => (
             <g
               key={kind}
-              onPointerEnter={() => set(kind)}
-              onPointerLeave={() => set(null)}
+              onPointerEnter={(event) => {
+                if (event.pointerType === "mouse") set(kind);
+              }}
+              onPointerLeave={(event) => {
+                if (event.pointerType === "mouse") set(null);
+              }}
               onFocus={() => set(kind)}
               onBlur={() => set(null)}
               tabIndex={compact ? -1 : 0}
               role="button"
               aria-label={`Highlight ${kind === "behave" ? "behaving" : "shirking"} payoff`}
-              onClick={() => set(active === kind ? null : kind)}
+              onClick={() => set(kind)}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
-                  set(active === kind ? null : kind);
+                  set(kind);
                 }
               }}
             >
@@ -427,8 +431,13 @@ export function HonestyMeter({
           tabIndex={0}
           onFocus={() => set(row.id)}
           onBlur={() => set(null)}
-          onPointerEnter={() => set(row.id)}
-          onPointerLeave={() => set(null)}
+          onClick={() => set(row.id)}
+          onPointerEnter={(event) => {
+            if (event.pointerType === "mouse") set(row.id);
+          }}
+          onPointerLeave={(event) => {
+            if (event.pointerType === "mouse") set(null);
+          }}
         >
           <div className="meter-label">
             <span>{row.name}</span>

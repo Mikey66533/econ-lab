@@ -156,15 +156,13 @@ export default function HolmstromTirole() {
   };
   const change = (key: keyof Parameters, value: number) => {
     if (!dragging.current) start();
-    setP((prev) => {
-      const next = normalizeParameters({ ...prev, [key]: value });
-      if (key === "R" && Math.abs(next.B - prev.B) > 0.00001)
-        setNote(
-          `B moved to $${next.B.toFixed(2)} to stay between R − 1 and R.`,
-        );
-      else setNote("");
-      return next;
-    });
+    const prev = pRef.current;
+    const next = normalizeParameters({ ...prev, [key]: value });
+    if (key === "R" && Math.abs(next.B - prev.B) > 0.00001)
+      setNote(`B moved to $${next.B.toFixed(2)} to stay between R − 1 and R.`);
+    else setNote("");
+    pRef.current = next;
+    setP(next);
   };
   const navigate = (i: number) => {
     setStep(i);

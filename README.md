@@ -1,5 +1,7 @@
 # Econ Lab
 
+[Live site](https://econ-lab.vercel.app) · [Model 01](https://econ-lab.vercel.app/models/holmstrom-tirole/)
+
 Economics models you can play with and actually understand. A personal portfolio and learning project by Michael Galvin, grounded in Columbia GU4710, Finance and the Real Economy.
 
 The first lesson asks: **Why can't a good idea just get funded?** It teaches the simplified Holmström–Tirole model through nine guided steps, an incentive chart, an honesty meter, a per-dollar view, a balance sheet, assumption counterfactuals, four prediction questions, and a shareable playground.
@@ -49,7 +51,7 @@ Sources use printed slide numbers and provide a map to PDF page positions. The t
 
 Target: Vercel account **mikey66533**, workspace **Mike**, Hobby plan, scope **mike-0182**. Do not use the unrelated cached account **michael-1896**. Verify identity and team before every new link or deployment. The initial deployment uses a project-specific CLI configuration, leaving the user's other login unchanged.
 
-Vercel runs `npm run build` and serves the static Next.js export. There are no server functions, paid add-ons, or environment secrets needed by the site. Production updates can be deployed from the CLI with the correct authenticated scope. Do not silently upgrade the plan.
+Vercel runs `npm run build` and serves the static Next.js export. There are no server functions, paid add-ons, or environment secrets needed by the site. Production updates currently use the CLI with the correct authenticated scope. Vercel did not accept the GitHub auto-deploy connection during setup, so a push alone does not deploy this project. Do not silently upgrade the plan.
 
 ## Manual review checklist
 

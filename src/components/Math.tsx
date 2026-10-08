@@ -46,11 +46,15 @@ export function Term({
       type="button"
       className={`math-term term-${id} ${active === id ? "term-active" : ""}`}
       aria-label={`Highlight ${id} in the diagram`}
-      onPointerEnter={() => set(id)}
-      onPointerLeave={() => set(null)}
+      onPointerEnter={(event) => {
+        if (event.pointerType === "mouse") set(id);
+      }}
+      onPointerLeave={(event) => {
+        if (event.pointerType === "mouse") set(null);
+      }}
       onFocus={() => set(id)}
       onBlur={() => set(null)}
-      onClick={() => set(active === id ? null : id)}
+      onClick={() => set(id)}
     >
       {tex ? <MathText tex={tex} /> : children}
     </button>
